@@ -1,1 +1,75 @@
-test obj 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080812">
+  <title>THE THREE SIGNALS — A Tarot Story</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <main class="app">
+    <header class="masthead">
+      <span class="serial">ARCHIVE / FILE 07</span>
+      <span class="status"><span class="status-dot"></span> OBSERVATION ACTIVE</span>
+    </header>
+
+    <section class="scene active" id="selectionScene" aria-label="Select your cards">
+      <div class="section-heading">
+        <span class="eyebrow">PROTOCOL: THREE SIGNALS</span>
+        <h1>THE ORDER OF FATE</h1>
+        <p id="instruction">Choose a card for the <strong>Beginning</strong>, then the <strong>Middle</strong>, then the <strong>End</strong>.</p>
+      </div>
+
+      <div class="card-choices" id="cardChoices" aria-label="Available tarot cards">
+        <button type="button" class="choice floating" data-card="wheel" aria-label="Select Wheel of Fortune">
+          <span class="flip-shell"><span class="card-face card-back"></span><span class="card-face card-front"><img src="assets/wheel.jpg" alt="Wheel of Fortune tarot card"></span></span>
+          <span class="choice-label">SIGNAL X</span>
+        </button>
+
+        <button type="button" class="choice floating" data-card="strength" aria-label="Select Strength">
+          <span class="flip-shell"><span class="card-face card-back"></span><span class="card-face card-front"><img src="assets/strength.jpg" alt="Strength tarot card"></span></span>
+          <span class="choice-label">SIGNAL VIII</span>
+        </button>
+
+        <button type="button" class="choice floating" data-card="judgement" aria-label="Select Judgement">
+          <span class="flip-shell"><span class="card-face card-back"></span><span class="card-face card-front"><img src="assets/judgement.jpg" alt="Judgement tarot card"></span></span>
+          <span class="choice-label">SIGNAL XX</span>
+        </button>
+      </div>
+
+      <div class="sequence-tracker" aria-label="Chosen card order">
+        <span class="tracker-label">STORY ORDER</span>
+        <div class="tracker-slots" id="trackerSlots"></div>
+      </div>
+      <p class="fineprint">Each chosen card is randomly drawn upright or reversed. After all three are chosen, the visual novel plays in the order you selected.</p>
+    </section>
+
+    <section class="scene" id="readingScene" aria-label="Visual novel reading">
+      <div class="reading-meta"><span id="chapterNumber">BEGINNING // 01 OF 03</span><span id="orientationBadge">UPRIGHT</span></div>
+      <div class="reading-stage"><div class="reading-light"></div><div class="reading-card" id="readingCard"><img id="readingImage" src="assets/wheel.jpg" alt="Revealed tarot card"></div></div>
+      <div class="reading-title" id="readingTitle">WHEEL OF FORTUNE</div>
+      <button class="dialogue-box" id="dialogueBox" type="button" aria-label="Continue dialogue">
+        <span class="speaker" id="speaker">THE OPERATOR</span>
+        <span class="dialogue-text" id="dialogueText"></span>
+        <span class="continue-label">CLICK TO CONTINUE <span aria-hidden="true">▸</span></span>
+      </button>
+      <div class="reading-controls"><button type="button" class="text-button" id="restartDuring">ABORT READING</button><span id="lineCount">01 / 03</span></div>
+    </section>
+
+    <section class="scene" id="endingScene" aria-label="Reading conclusion">
+      <span class="eyebrow">OBSERVATION COMPLETE / MEMORY RECOVERED</span>
+      <h2 id="endingTitle">THE FINAL SIGNAL</h2>
+      <div class="ending-cards" id="endingCards"></div>
+      <div class="ending-report"><span class="report-label">FINAL INTERPRETATION</span><p id="endingText"></p><p class="closing-line" id="closingLine"></p></div>
+      <p class="auto-return" id="countdown" aria-live="polite">Returning to the observation chamber in 15 seconds.</p>
+      <button type="button" class="primary-button" id="restartButton">BEGIN ANOTHER CYCLE ↻</button>
+    </section>
+
+    <footer>NO FUTURE IS GUARANTEED // THE SEQUENCE IS YOURS</footer>
+  </main>
+</body>
+</html>
